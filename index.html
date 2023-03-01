@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Index</title>
+    <link rel="icon" type="image/x-icon" href="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- ======== JQuery ======= -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+</head>
+
+<body>
+    <main class="bg-light" style="height: 100vh">
+        <div class="card center shadow-lg"  style="width: 80%">
+
+                
+                {% if msg %}
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <strong>{{msg}}</strong>
+                    </div>
+                {% endif %}
+                    
+
+                <div class="card-body">
+
+                    <div id="form" class="p-3 mb-5 mt-5">
+
+                        <div class="stepwizard">
+                            <div class="stepwizard-row setup-panel">
+                                <div class="stepwizard-step">
+                                    <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                                    <p>Step 1</p>
+                                </div>
+                                <div class="stepwizard-step">
+                                    <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                    <p>Step 2</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form role="form" method="POST">
+                            <div class="row setup-content" id="step-1">
+                                <div class="col-xs-12">
+                                    <div class="col-md-12">
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Date</label>
+                                                    <input  maxlength="100" type="text" name="date" required="required" class="form-control" value="{{date}}" readonly />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Name</label>
+                                                    <input  maxlength="100" type="text" name="name" required="required" class="form-control" placeholder="Enter Name"  />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">County</label>
+                                                    <select name="county" id="" required="required" class="form-control">
+                                                        <option value="">--- Select County ---</option>
+                                                        <option value="Samburu">Samburu</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Sub Office</label>
+                                                    <select name="sub_office" id="id_sub_office" required="required" class="form-control">
+                                                        <option value="">--- Select Sub Office ---</option>
+                                                        <option value="Isiolo">Isiolo</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row setup-content" id="step-2">
+                                <div class="col-xs-12">
+                                    <div class="col-md-12">
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">Type</label>
+                                                    <select class="form-control" name="type" id="id_type" required>
+                                                        <option value="">--- Select Type ---</option>
+                                                        <option value="Resources transferred">Resources transferred</option>
+                                                        <option value="Capacity development and technical support provided">Capacity development and technical support provided</option>
+                                                        <option value="Assets created">Assets created</option>
+                                                        <option value="Social and Behaviour Change Communication (SBCC) delivered">Social and Behaviour Change Communication (SBCC) delivered</option>
+                                                        <option value="Financial & Insurance Resources/Services">Financial & Insurance Resources/Services</option>
+                                                        <option value="Cross Cutting Inditator">Cross Cutting Inditator</option>
+                                                        <option value="Small holder Farmers Supported">Small holder Farmers Supported</option>
+                                                        <option value="Tools & Products">Tools & Products</option>
+                                                        <option value="Infrastructure">Infrastructure</option>
+                                                        <option value="Other indicators">Other indicators</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">INDCODE</label>
+                                                    <select name="indcode" id="id_indcode" placeholder="Enter INDCODE" required class="form-control">
+                                                        <option value="">--- Select INDICODE ---</option>
+                                                        <option value="A.1-3.2">A.1-3.2</option>
+                                                        <option value="A.5-3.2">A.5-3.2</option>
+                                                        <option value="C.4-3.1">C.4-3.1</option>
+                                                        <option value="C.6-3.1">C.6-3.1</option>
+                                                        <option value="C.8-3.1">C.8-3.1</option>
+                                                        <option value="D.1-3.1">D.1-3.1</option>
+                                                        <option value="E.4-3.3">E.4-3.3</option>
+                                                        <option value="E.5-3.3">E.5-3.3</option>
+                                                        <option value="G.1-3.11">G.1-3.11</option>
+                                                        <option value="CCI">CCI</option>
+                                                        <option value="SMS1-SMS1">SMS1-SMS1</option>
+                                                        <option value="A.7-4.2">A.7-4.2</option>
+                                                        <option value="C.4-4.2">C.4-4.2</option>
+                                                        <option value="C.4-4.3">C.4-4.3</option>
+                                                        <option value="C.5-4.2">C.5-4.2</option>
+                                                        <option value="C.5-4.3">C.5-4.3</option>
+                                                        <option value="F.1-4.3">F.1-4.3</option>
+                                                        <option value="I.1-4.1">I.1-4.1</option>
+                                                        <option value="L.1-4.2">L.1-4.2</option>
+                                                        <option value="OID">OID</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="">Activity</label>
+                                                    <select name="activity" id="id_activity" placeholder="Enter Activity" required class="form-control">
+                                                        <option value="">--- Select Activity ---</option>
+                                                        <option value="A1">A1</option>
+                                                        <option value="A5">A5</option>
+                                                        <option value="C4">C4</option>
+                                                        <option value="C6">C6</option>
+                                                        <option value="C8">C8</option>
+                                                        <option value="D1">D1</option>
+                                                        <option value="E4">E4</option>
+                                                        <option value="E5">E5</option>
+                                                        <option value="G1">G1</option>
+                                                        <option value="Cross Cutting Inditator">Cross Cutting Inditator</option>
+                                                        <option value="SMS1">SMS1</option>
+                                                        <option value="A7">A7</option>
+                                                        <option value="C5">C5</option>
+                                                        <option value="C4">C4</option>
+                                                        <option value="F1">F1</option>
+                                                        <option value="I1">I1</option>
+                                                        <option value="L1">L1</option>
+                                                        <option value="Other indicators">Other indicators</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <label for="">Output Indicator</label>
+                                                    <select class="form-control" name="output_indicator" id="id_output_indicator" required>
+                                                        <option value="">--- Select Output Indicator ---</option>
+                                                        <option value="Number of participants in beneficiary training sessions (livelihood-support/agriculture&farming/IGA)">Number of participants in beneficiary training sessions (livelihood-support/agriculture&farming/IGA)</option>
+                                                        <option value="Quantity of non-food items distributed">Quantity of non-food items distributed</option>
+                                                        <option value="Number of government/national partner staff receiving technical assistance and training">Number of government/national partner staff receiving technical assistance and training</option>
+                                                        <option value="Number of tools or products developed">Number of tools or products developed</option>
+                                                        <option value="3.1 USD value of assets and infrastructure handed over to national stakeholders as a result of WFP capacity strengthening support (new)">3.1 USD value of assets and infrastructure handed over to national stakeholders as a result of WFP capacity strengthening support (new)</option>
+                                                        <option value="3.1 Number of assets built, restored or maintained by targeted households and communities, by type and unit of measure">3.1 Number of assets built, restored or maintained by targeted households and communities, by type and unit of measure</option>
+                                                        <option value="3.3 Number of people reached through interpersonal SBCC approaches (female/Male)">3.3 Number of people reached through interpersonal SBCC approaches (female/Male)</option>
+                                                        <option value="3.3 Number of people reached through SBCC approaches using mid-sized media (i.e. community radio)">3.3 Number of people reached through SBCC approaches using mid-sized media (i.e. community radio)</option>
+                                                        <option value="3.11 Linkages to financial resources and insurance services facilitated">3.11 Linkages to financial resources and insurance services facilitated</option>
+                                                        <option value="Cross Cutting Inditator">Cross Cutting Inditator</option>
+                                                        <option value="SMS1: Facilitate access to markets and provide technical expertise in supply chain to promote inclusive commercial food systems & enhance consumption of safe, nutritious & diversified foods">SMS1: Facilitate access to markets and provide technical expertise in supply chain to promote inclusive commercial food systems & enhance consumption of safe, nutritious & diversified foods</option>
+                                                        <option value=" 4.2 Number of retailers participating in cash-based transfer programmes"> 4.2 Number of retailers participating in cash-based transfer programmes</option>
+                                                        <option value="4.2 Number of technical assistance activities provided.Commercial supply chain actors ">4.2 Number of technical assistance activities provided.Commercial supply chain actors </option>
+                                                        <option value="4.3 Number of technical assistance activities provided.Smallholder producers and small-scale traders and processors">4.3 Number of technical assistance activities provided.Smallholder producers and small-scale traders and processors</option>
+                                                        <option value="4.2 Number of government/national partner staff receiving technical assistance and training">4.2 Number of government/national partner staff receiving technical assistance and training</option>
+                                                        <option value="4.3 Number of government/national partner staff receiving technical assistance and training-Smallholder producers and small-scale traders and processors">4.3 Number of government/national partner staff receiving technical assistance and training-Smallholder producers and small-scale traders and processors</option>
+                                                        <option value="4.3 Number of smallholder farmers supported by WFP">4.3 Number of smallholder farmers supported by WFP</option>
+                                                        <option value="4.1 Number of tools or products developed or revised to enhance national food security and nutrition systems as a result of WFP capacity strengthening support .">4.1 Number of tools or products developed or revised to enhance national food security and nutrition systems as a result of WFP capacity strengthening support .</option>
+                                                        <option value="4.2 Number of infrastructure works implemented">4.2 Number of infrastructure works implemented</option>
+                                                        <option value="Other indicators">Other indicators</option>
+                                                        <option value="Amount of financing provided to SHFs/MSMEs (in US$) through financial services (including the blended finance facility)">Amount of financing provided to SHFs/MSMEs (in US$) through financial services (including the blended finance facility)</option>
+                                                        <option value="Number of SHFs/MSMEs accessing financial products">Number of SHFs/MSMEs accessing financial products</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="">Detailed Indicator</label>
+                                                    <select class="form-control" name="detailed_indicator" id="id_detailed_indicator" required>
+                                                        <option value="">--- Select Detailed Indicator ---</option>
+                                                        <option value="Number of people trained on PIC/Complaints committee/other community organizational strengthening">Number of people trained on PIC/Complaints committee/other community organizational strengthening</option>
+                                                        <option value="Number of people trained on good agricultural practices and value chains">Number of people trained on good agricultural practices and value chains</option>
+                                                        <option value="Number of people trained on VSLAs">Number of people trained on VSLAs</option>
+                                                        <option value="Number of people trained on insurance">Number of people trained on insurance</option>
+                                                        <option value="Number of youth mentored/trained under agribusiness project.">Number of youth mentored/trained under agribusiness project.</option>
+                                                        <option value="Number of people trained on other topics than those listed from">Number of people trained on other topics than those listed from</option>
+                                                        <option value="Number of water tanks delivered  ">Number of water tanks delivered  </option>
+                                                        <option value="Quantity of agricultural inputs (seeds, fertilizer) distributed">Quantity of agricultural inputs (seeds, fertilizer) distributed</option>
+                                                        <option value="Quantity of agricultural tools distributed">Quantity of agricultural tools distributed</option>
+                                                        <option value="Quantity of bee keeping equipment items distributed">Quantity of bee keeping equipment items distributed</option>
+                                                        <option value="Quantity of livestock distributed">Quantity of livestock distributed</option>
+                                                        <option value="Number of irrigation or farm pond equipment/kits distributed">Number of irrigation or farm pond equipment/kits distributed</option>
+                                                        <option value="Number of shadenets distributed">Number of shadenets distributed</option>
+                                                        <option value="Number of engineering equipment distributed">Number of engineering equipment distributed</option>
+                                                        <option value="Number of government/national partner staff receiving training on farming and value chains">Number of government/national partner staff receiving training on farming and value chains</option>
+                                                        <option value="Number of government/national partner staff receiving training on VSLAs">Number of government/national partner staff receiving training on VSLAs</option>
+                                                        <option value="Number of government/national partner staff receiving training on insurance">Number of government/national partner staff receiving training on insurance</option>
+                                                        <option value="Number of government/national partner staff receiving training on youth engagement in agribusiness">Number of government/national partner staff receiving training on youth engagement in agribusiness</option>
+                                                        <option value="Number of government/national partner staff receiving training on other topics that those listed above">Number of government/national partner staff receiving training on other topics that those listed above</option>
+                                                        <option value="C.5//3.1 Number of technical assistance activities provided">C.5//3.1 Number of technical assistance activities provided</option>
+                                                        <option value="Number of SOPs, procedures or programme guidelines developed ">Number of SOPs, procedures or programme guidelines developed </option>
+                                                        <option value="Number of technical designs for assets or infrastructure developed">Number of technical designs for assets or infrastructure developed</option>
+                                                        <option value="Number of ESIA developed">Number of ESIA developed</option>
+                                                        <option value="Number of studies (surveys, reviews, evaluations, research) developed ">Number of studies (surveys, reviews, evaluations, research) developed </option>
+                                                        <option value="Value of equipment (computers, furniture) distributed value of motorbikes/vehicles distributed">Value of equipment (computers, furniture) distributed value of motorbikes/vehicles distributed</option>
+                                                        <option value="Hectares (ha) of agricultural land benefiting from new irrigation schemes (including irrigation canal construction, specific protection measures, embankments, etc)">Hectares (ha) of agricultural land benefiting from new irrigation schemes (including irrigation canal construction, specific protection measures, embankments, etc)</option>
+                                                        <option value="Hectares (ha) of agricultural land benefiting from rehabilitated irrigation schemes (including irrigation canal repair, specific protection measures, embankments, etc)">Hectares (ha) of agricultural land benefiting from rehabilitated irrigation schemes (including irrigation canal repair, specific protection measures, embankments, etc)</option>
+                                                        <option value="Hectares (ha) of cultivated land treated and conserved with physical soil and water conservation measures only">Hectares (ha) of cultivated land treated and conserved with physical soil and water conservation measures only</option>
+                                                        <option value="Hectares (ha) of cultivated land treated with biological stabilization or agro forestry techniques only (including multi-storey gardening, green fences, and various tree belts)">Hectares (ha) of cultivated land treated with biological stabilization or agro forestry techniques only (including multi-storey gardening, green fences, and various tree belts)</option>
+                                                        <option value="Hectares (ha) of cultivated land treated with both physical soil and water conservation measures and biological stabilization or agro forestry techniques">Hectares (ha) of cultivated land treated with both physical soil and water conservation measures and biological stabilization or agro forestry techniques</option>
+                                                        <option value="Kilometres (km) of irrigation canals constructed">"Kilometres (km) of irrigation canals constructed"</option>
+                                                        <option value="Kilometres (km) of irrigation canals rehabilitated">"Kilometres (km) of irrigation canals rehabilitated"</option>
+                                                        <option value="Number of  community water ponds for irrigation/livestock use constructed (8000-15000 cbmt">"Number of  community water ponds for irrigation/livestock use constructed (8000-15000 cbmt)"</option>
+                                                        <option value="Number of fish ponds constructed">"Number of fish ponds constructed"</option>
+                                                        <option value="Number of tree seedlings produced/provided">Number of tree seedlings produced/provided</option>
+                                                        <option value="Number of wells or shallow wells rehabilitated for domestic use">"Number of wells or shallow wells rehabilitated for domestic use"</option>
+                                                        <option value="Number of chicken houses constructed">"Number of chicken houses constructed"</option>
+                                                        <option value="Number of feed storage facilities constructed">"Number of feed storage facilities constructed"</option>
+                                                        <option value="Number of wells or shallow wells built for domestic use">"Number of wells or shallow wells built for domestic use"</option>
+                                                        <option value="Number of wells, shallow wells constructed for irrigation/livestock use (> 50 cbmt)">"Number of wells, shallow wells constructed for irrigation/livestock use (> 50 cbmt)"</option>
+                                                        <option value="individual">Individual</option>
+                                                        <option value="Number of people benefiting from assets and climate adaptation practices facilitated by WFP’s Risk Management activities">"Number of people benefiting from assets and climate adaptation practices facilitated by WFP’s Risk Management activities"</option>
+                                                        <option value="Number of people benefiting from payouts of micro-insurance schemes - (Premium paid with Value Voucher for Services)">"Number of people benefiting from payouts of micro-insurance schemes - (Premium paid with Value Voucher for Services)"</option>
+                                                        <option value="Total number of people covered by micro-insurance schemes (Premium paid with Value -Voucher for Services)female/male">Total number of people covered by micro-insurance schemes (Premium paid with Value -Voucher for Services)female/male</option>
+                                                        <option value="Number of farmers insured through micro-insurance schemes (female/Male, participants)">Number of farmers insured through micro-insurance schemes (female/Male, participants)</option>
+                                                        <option value="Total sum insured through micro-insurance schemes (Premium paid with Value Voucher for Services)">Total sum insured through micro-insurance schemes (Premium paid with Value Voucher for Services)</option>
+                                                        <option value="Total USD value disbursed as payouts of micro-insurance schemes (Premium paid with Value Voucher for Services)">"Total USD value disbursed as payouts of micro-insurance schemes (Premium paid with Value Voucher for Services)"</option>
+                                                        <option value="Total USD value of premiums paid under micro-insurance schemes (Premium paid with Value Voucher for Services)">"Total USD value of premiums paid under micro-insurance schemes (Premium paid with Value Voucher for Services)"</option>
+                                                        <option value="Number of targeted young men and women who have adopted and are using improved GAP">Number of targeted young men and women who have adopted and are using improved GAP</option>
+                                                        <option value="Number of SHFs accessing agricultural inputs">Number of SHFs accessing agricultural inputs</option>
+                                                        <option value="A number of digital tools adopted by SHFs and value chain actors. ">A number of digital tools adopted by SHFs and value chain actors. </option>
+                                                        <option value="Loan repayment  rates from SHF VSLAs">Loan repayment  rates from SHF VSLAs</option>
+                                                        <option value="Savings rates from SHF VSLAs">Savings rates from SHF VSLAs</option>
+                                                        <option value="Loan repayment rates for farmer service centers, MSPs, and other service providers">Loan repayment rates for farmer service centers, MSPs, and other service providers</option>
+                                                        <option value="Percentage of people reporting improved access to credit ">Percentage of people reporting improved access to credit </option>
+                                                        <option value="Number of blended financing mechanisms established">Number of blended financing mechanisms established</option>
+                                                        <option value="Amount of loans accessed by participants of financial inclusion initiatives promoted by WFP">"Amount of loans accessed by participants of financial inclusion initiatives promoted by WFP"</option>
+                                                        <option value="Amount of savings made by participants of financial inclusion initiatives promoted by - WFP">"Amount of savings made by participants of financial inclusion initiatives promoted by - WFP"</option>
+                                                        <option value="Number of participants of financial inclusion initiatives promoted by WFP (Female/male)">"Number of participants of financial inclusion initiatives promoted by WFP (Female/male)"</option>
+                                                        <option value="Number of active VSLAs ">Number of active VSLAs </option>
+                                                        <option value="Number of active youth YSLAs (youth savings groups)">Number of active youth YSLAs (youth savings groups)</option>
+                                                        <option value="Number of youth in work">Number of youth in work</option>
+                                                        <option value="Number of young people benefiting from more dignified work (at least 2 of the  dignified & fulfilling work markers in guidance)">Number of young people benefiting from more dignified work (at least 2 of the  dignified & fulfilling work markers in guidance)</option>
+                                                        <option value="Number of business ideas developed and accepted for business development within agricultural businesses from innovation challenge and other youth engagement platforms by type">Number of business ideas developed and accepted for business development within agricultural businesses from innovation challenge and other youth engagement platforms by type</option>
+                                                        <option value="Number of products and service delivery undertaken by young people">Number of products and service delivery undertaken by young people</option>
+                                                        <option value="Number of young people coached/trained in entrepreneurship">Number of young people coached/trained in entrepreneurship</option>
+                                                        <option value="Number of youth led FSCs established">Number of youth led FSCs established</option>
+                                                        <option value="Proportion of targeted marginalized group employed in different value chain segments ">Proportion of targeted marginalized group employed in different value chain segments </option>
+                                                        <option value="Proportion of targeted women farmers report that they have influence over decision-- making, joint planning, and use of household incomes and productive resources.">Proportion of targeted women farmers report that they have influence over decision-- making, joint planning, and use of household incomes and productive resources. </option>
+                                                        <option value="Number of young women and men engaged in production">Number of young women and men engaged in production</option>
+                                                        <option value="Proportion of trained men and women SHFs with knowledge/awareness on gender equality">Proportion of trained men and women SHFs with knowledge/awareness on gender equality</option>
+                                                        <option value="Proportion of county stakeholders  facilitating the GALS methodology">Proportion of county stakeholders  facilitating the GALS methodology </option>
+                                                        <option value="Number of community members trained on the GALS methodology ">Number of community members trained on the GALS methodology </option>
+                                                        <option value="Number of staff trained on GALS">Number of staff trained on GALS</option>
+                                                        <option value="Number of exchange Learning visit to existing GALS implementing groups in  agricultural value chain development and livelihood activities">Number of exchange Learning visit to existing GALS implementing groups in  agricultural value chain development and livelihood activities</option>
+                                                        <option value="Number of GALS community champions">Number of GALS community champions</option>
+                                                        <option value="Proportion of trained GALS champions and change agents certified">Proportion of trained GALS champions and change agents certified</option>
+                                                        <option value="Percentage of targeted SHFs who are using faciliated agricultural inputs and services to increase production (disaggregated by gender, age, disability)">Percentage of targeted SHFs who are using faciliated agricultural inputs and services to increase production (disaggregated by gender, age, disability)</option>
+                                                        <option value="Number of SHFs trained on improved agricultural practices who know how to apply them ">Number of SHFs trained on improved agricultural practices who know how to apply them </option>
+                                                        <option value="New of youth groups profiled">New of youth groups profiled</option>
+                                                        <option value="Number of active youth groups">Number of active youth groups</option>
+                                                        <option value="OFSP Value chain-New number of vines produced (No. of vines)">OFSP Value chain-New number of vines produced (No. of vines)</option>
+                                                        <option value="OFSP Value chain-quantities of roots harvested (Mt)">OFSP Value chain-quantities of roots harvested (Mt)</option>
+                                                        <option value="OFSP Value chain-number of people/households being reached by gender">OFSP Value chain-number of people/households being reached by gender</option>
+                                                        <option value="OFSP Value chain-Acreage covered under OFSP">OFSP Value chain-Acreage covered under OFSP</option>
+                                                        <option value="HIB Value chain-quantities  harvested ">HIB Value chain-quantities  harvested </option>
+                                                        <option value="HIB Value chain-number of people/households being reached by gender">HIB Value chain-number of people/households being reached by gender</option>
+                                                        <option value="HIB Value chain-Acreage ">HIB Value chain-Acreage  </option>
+                                                        <option value="Fish Value chain-quantities  harvested">Fish Value chain-quantities  harvested </option>
+                                                        <option value="Fish Value chain-number of people/households being reached by gender">Fish Value chain-number of people/households being reached by gender</option>
+                                                        <option value="Number of traders/retailers trained-Metro RTR">Number of traders/retailers trained-Metro RTR</option>
+                                                        <option value="Number of traders/retailers trained-FSQ">Number of traders/retailers trained-FSQ</option>
+                                                        <option value="Number of traders/retailers trained-Milling and fortification">Number of traders/retailers trained-Milling and fortification</option>
+                                                        <option value="Number of traders/retailers participating in business to business linkages">Number of traders/retailers participating in business to business linkages</option>
+                                                        <option value="Number of traders/retailers accessing credit">Number of traders/retailers accessing credit</option>
+                                                        <option value="Number of traders/retailers supported with infrastructure development/equipment">Number of traders/retailers supported with infrastructure development/equipment</option>
+                                                        <option value="Number of traders/retailers supported with other trainings than above">Number of traders/retailers supported with other trainings than above</option>
+                                                        <option value="Number of capacity strengthening initiatives facilitated by WFP to enhance national food security and nutrition stakeholder capacities (new)">"Number of capacity strengthening initiatives facilitated by WFP to enhance national food security and nutrition stakeholder capacities (new)"</option>
+                                                        <option value="Number of technical assistance activities provided on food safety and quality">Number of technical assistance activities provided on food safety and quality</option>
+                                                        <option value="Number of technical assistance activities provided on milling and forttification">Number of technical assistance activities provided on milling and forttification</option>
+                                                        <option value="Number of technical assistance activities provided on retail/supply chain efficiency">Number of technical assistance activities provided on retail/supply chain efficiency</option>
+                                                        <option value="Number of technical assistance activities provided on other topics">Number of technical assistance activities provided on other topics</option>
+                                                        <option value="Number of technical assistance activities provided on post harvest loss/management/storage (PHMS)">Number of technical assistance activities provided on post harvest loss/management/storage (PHMS)</option>
+                                                        <option value="Number of technical assistance activities provided on market access and linkages ">Number of technical assistance activities provided on market access and linkages </option>
+                                                        <option value="Number of technical assistance activities provided on milling and fortification">Number of technical assistance activities provided on milling and fortification</option>
+                                                        <option value="Number of people engaged in capacity strengthening initiatives facilitated by WFP to enhance national food security and nutrition stakeholder capacities (new)">"Number of people engaged in capacity strengthening initiatives facilitated by WFP to enhance national food security and nutrition stakeholder capacities (new)"</option>
+                                                        <option value="Number of government and partner staff trained on food safety and quality">Number of government and partner staff trained on food safety and quality</option>
+                                                        <option value="Number of government and partner staff qualified and certified on food safety and quality">Number of government and partner staff qualified and certified on food safety and quality</option>
+                                                        <option value="Number of government and partner staff trained on retail/supply chain efficiency">Number of government and partner staff trained on retail/supply chain efficiency</option>
+                                                        <option value="Number of government and partner staff trained on milling and fortification">Number of government and partner staff trained on milling and fortification</option>
+                                                        <option value="Number of government and partner staff trained on other topics than those listed above">Number of government and partner staff trained on other topics than those listed above</option>
+                                                        <option value="Number of government and partner staff trained on post harvest loss/management/storage (PHMS)">Number of government and partner staff trained on post harvest loss/management/storage (PHMS)</option>
+                                                        <option value="Number of government and partner staff trained on market access and linkages - full training pack">Number of government and partner staff trained on market access and linkages - full training pack</option>
+                                                        <option value="C.8//4.2 USD value of assets and infrastructure handed over to national stakeholders as a result of WFP capacity strengthening support (new)">C.8//4.2 USD value of assets and infrastructure handed over to national stakeholders as a result of WFP capacity strengthening support (new)</option>
+                                                        <option value="Number of smallholder farmers trained on post-harvest management">Number of smallholder farmers trained on post-harvest management</option>
+                                                        <option value="Number of smallholder farmers trained on food safety and quality">Number of smallholder farmers trained on food safety and quality</option>
+                                                        <option value="Number of smallholder farmers/processors trained on milling and fortification">Number of smallholder farmers/processors trained on milling and fortification</option>
+                                                        <option value="Number of of smallholder farmers/processors trained/participating on market access and linkages">Number of of smallholder farmers/processors trained/participating on market access and linkages </option>
+                                                        <option value="Number of smallholder farmers participating in exchange visits">Number of smallholder farmers participating in exchange visits</option>
+                                                        <option value="Number of smallholder farmers supported with digital systems applications">Number of smallholder farmers supported with digital systems applications</option>
+                                                        <option value="Number of smallholder farmers supported to access agro-inputs">Number of smallholder farmers supported to access agro-inputs</option>
+                                                        <option value="Number of smallholder farmers supported with infrastructure (storage, milling sites, sheds, etc)">Number of smallholder farmers supported with infrastructure (storage, milling sites, sheds, etc)</option>
+                                                        <option value="Number of smallholder farmers supported with equipment (pallets, PHL equipment, mills, etc.)">Number of smallholder farmers supported with equipment (pallets, PHL equipment, mills, etc.)</option>
+                                                        <option value="Number of smallholder farmers selling through WFP-supported aggregation systems">Number of smallholder farmers selling through WFP-supported aggregation systems</option>
+                                                        <option value="Number of smallholder farmers receiving support in other areas than those listed above">Number of smallholder farmers receiving support in other areas than those listed above</option>
+                                                        <option value="Number of strategies and guidelines developed">Number of strategies and guidelines developed</option>
+                                                        <option value="Number of policies developed">Number of policies developed</option>
+                                                        <option value="Number of technical designs for infrastructure developed">Number of technical designs for infrastructure developed</option>
+                                                        <option value="Number of capacity assessments undertaken">Number of capacity assessments undertaken</option>
+                                                        <option value="Number of studies (surveys, reviews, evaluations, research) developed ">Number of studies (surveys, reviews, evaluations, research) developed </option>
+                                                        <option value="Number of tools or systems developed">Number of tools or systems developed</option>
+                                                        <option value="Number of mini-laboratories completed">Number of mini-laboratories completed</option>
+                                                        <option value="Number of stores completed (farmers and school stores)">Number of stores completed (farmers and school stores)</option>
+                                                        <option value="Number of milling/grading sheds completed">Number of milling/grading sheds completed</option>
+                                                        <option value="Number of market structures completed">Number of market structures completed</option>
+                                                        <option value="Number of cold storage solutions completed">Number of cold storage solutions completed</option>
+                                                        <option value="Amount of credit accessed (Number of smallholder farmers, FSCs, traders supported to access financial services/credit)">"Amount of credit accessed (Number of smallholder farmers, FSCs, traders supported to access financial services/credit)"</option>
+                                                        <option value="Amount of financing provided to SHFs/MSMEs (in US$) through financial services (including the blended finance facility)">Amount of financing provided to SHFs/MSMEs (in US$) through financial services (including the blended finance facility)</option>
+                                                        <option value="Number of SHFs/MSMEs accessing financial products">Number of SHFs/MSMEs accessing financial products</option>
+                                                        <option value="Value of sales through WFP supported aggregation systems">Value of sales through WFP supported aggregation systems </option>
+                                                        <option value="Volume of sales through WFP supported aggregation systems ">Volume of sales through WFP supported aggregation systems </option>
+                                                        <option value="Percentage of targeted smallholder farmers selling through WFP-supported farmer aggregation systems">Percentage of targeted smallholder farmers selling through WFP-supported farmer aggregation systems</option>
+                                                        <option value="Value of agricultural inputs supplied/services by targeted aggregation systems to male and female SHFs">Value of agricultural inputs supplied/services by targeted aggregation systems to male and female SHFs </option>
+                                                        <option value="Value of PHM technology and equipment purchased by SHFs">Value of PHM technology and equipment purchased by SHFs</option>
+                                                        <option value="Percentage growth in incomes from sale of agricultural commodities, inputs and provision of agricultural services (examples - soil testing) by targeted agripreneurs">Percentage growth in incomes from sale of agricultural commodities, inputs and provision of agricultural services (examples - soil testing) by targeted agripreneurs </option>
+                                                        <option value="Number of farmer groups/ organizations, MSMEs, and entrepreneurs reporting increased revenues">Number of farmer groups/ organizations, MSMEs, and entrepreneurs reporting increased revenues </option>
+                                                        <option value="Number of advocacy meetings held with government and other stakeholders with stated - purpose or agenda of discussing pro-SMSF procurement">Number of advocacy meetings held with government and other stakeholders with stated - purpose or agenda of discussing pro-SMSF procurement </option>
+                                                        <option value="Number of contract models implemented">Number of contract models implemented</option>
+                                                        <option value="Number of FSCs/FOs established">Number of FSCs/FOs established</option>
+                                                        <option value="Number of buyers purchasing from FSCs ">Number of buyers purchasing from FSCs </option>
+                                                        <option value="Number of farmers trained on the nixtamalisation process (disaggregated by gender, age and disability)">Number of farmers trained on the nixtamalisation process (disaggregated by gender, age and disability)</option>
+                                                        <option value="Number of groups supported on nixtamalisation process">Number of groups supported on nixtamalisation process</option>
+                                                        <option value="Number of tests undertaken as part of  nixtamalisation (TBC)">Number of tests undertaken as part of  nixtamalisation (TBC)</option>
+                                                        <option value="Number of new PHM technologies introduced and rolled out">Number of new PHM technologies introduced and rolled out</option>
+                                                        <option value="Number of PHM technology distribution points established/identified">Number of PHM technology distribution points established/identified</option>
+                                                        <option value="Number of  Post harvest technologies suppliers engaged">Number of  Post harvest technologies suppliers engaged </option>
+                                                        <option value="Number of field days/demonstrations/exchange visits hosted to encourage engagement by farmers and service providers">Number of field days/demonstrations/exchange visits hosted to encourage engagement by farmers and service providers</option>
+                                                        <option value="Number of tools developed to measure PHL ">Number of tools developed to measure PHL </option>
+                                                        <option value="Number of targeted SHFs purchasing PHL technology and equipment">Number of targeted SHFs purchasing PHL technology and equipment</option>
+                                                        <option value="Number of  post-harvest management manuals developed/customised">Number of  post-harvest management manuals developed/customised</option>
+                                                        <option value="Number of SHFs trained on Post harvest handling and storage (PHHS) practices and technologies ">Number of SHFs trained on Post harvest handling and storage (PHHS) practices and technologies </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">UOM</label>
+                                                    <select class="form-control" name="uom" id="id_uom" required>
+                                                        <option value="">--- Select UOM ---</option>
+                                                        <option value="Number">Number</option>
+                                                        <option value="Corporate">Corporate</option>
+                                                        <option value="Individual">Individual</option>
+                                                        <option value="USD">USD</option>
+                                                        <option value="%">%</option>
+                                                        <option value="Mt">Mt</option>
+                                                        <option value="Ha">Ha</option>
+                                                        <option value="Unit">Unit</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">Corporate Indicator</label>
+                                                    <select class="form-control" name="corporate_indicator" id="id_corporate_indicator" required>
+                                                        <option value="">--- Select Coporate Indicator</option>
+                                                        <option value="SO2">SO2</option>
+                                                        <option value="MCF">MCF</option>
+                                                        <option value="SO2/MCF">SO2/MCF</option>
+                                                        <option value="Corporate">Corporate</option>
+                                                        <option value="Corporate/MCF">Corporate/MCF</option>
+                                                        <option value="Outcome Indicator">Outcome Indicator</option>
+                                                        <option value="Outcome Indicator/MCF">Outcome Indicator/MCF</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="">Adult Male</label>
+                                                    <input type="number" class="form-control" name="adult_male" id="id_adult_male" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="">Adult Female</label>
+                                                    <input type="number" class="form-control" name="adult_female" id="id_adult_female" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="">Youth Male</label>
+                                                    <input type="number" class="form-control" name="youth_male" id="id_youth_male" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="">Youth Female</label>
+                                                    <input type="number" class="form-control" name="youth_female" id="id_youth_female" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="">PLWD Male</label>
+                                                    <input type="number" class="form-control" name="plwd_male" id="id_plwd_male" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="">PLWD Female</label>
+                                                    <input type="number" class="form-control" name="plwd_female" id="id_plwd_female" required>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        
+                                        <button class="btn btn-success btn-lg pull-right" type="submit">Finish!</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
+                
+                </div>
+
+        </div>
+    </main>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
